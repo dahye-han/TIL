@@ -8,4 +8,4 @@
     - [3.배열](https://github.com/dahye-han/TIL/blob/master/CS50/3.%EB%B0%B0%EC%97%B4.md)
     - [4.알고리즘](https://github.com/dahye-han/TIL/blob/master/CS50/4.%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md)
     - [5.메모리](https://github.com/dahye-han/TIL/blob/master/CS50/5.%EB%A9%94%EB%AA%A8%EB%A6%AC.md)
-    - [6.자료구조]()
+    - [6.자료구조](https://github.com/dahye-han/TIL/blob/master/CS50/6.%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0.md)
