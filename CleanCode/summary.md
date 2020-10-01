@@ -43,3 +43,46 @@ public List<int[]> getFlaggedcells() {
 - 프로그래머에게 익숙한 기술 개념에는 기술 개념을 사용, 적절한 용어가 없다면 문제 영역에서 이름을 가져옴
 
 ## 함수
+- 작게 만들어야 함
+- 함수는 한가지만을 잘 해야함
+- 함수 당 추상화 수준은 하나여야 함
+- switch문
+  - 본질적으로 switch문은 N가지를 처리하여 하기에 한 가지 작업만하도록 작게 만들기가 어려움
+  - 다형성을 이용하여 각 switch 문을 저차원 클래스에 숨기고 절대로 반복하지않는 방법이 있음
+  ```
+  public Money calculatePay(Employee e)
+  throws InvalidEmployeeType {
+    switch (e.type) {
+      case COMMISSIONED:
+        retuen calculateCommissionedPay(e);
+      case HOURLY:
+        return calculateHourlyPay(e);
+      case SALARIED:
+        return calculateSalariedPay(e);
+      default:
+        throws new InvalidEmployeeType(e.type);
+    }
+  }
+  
+  //아래의 내용으로 개선
+  
+  public abstract class Employee {
+    public abstract boolean isPayday();
+    public abstract Money caculatePay();
+    public abstract void deliverPay(MoneyPay);
+  }
+  public interface EmployeeFactory {
+    public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType {
+      switch (r.type) {
+        case COMMISSIONED:
+          return new CommissionedEmployee(r);
+        case HOURLY:
+          return new HourlyEmployee(r);
+        case SALARIED:
+          return new SalariedEmployee(r);
+        default:
+          throw new InvalidEmployeeType(r.type);
+      }
+    }
+  }
+  ```
