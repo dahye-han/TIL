@@ -86,3 +86,35 @@ public List<int[]> getFlaggedcells() {
     }
   }
   ```
+- 서술적인 이름을 사용
+ - 길고 서술적인 이름이 짧고 어려운 이름보다 좋음
+ - 모듈 내에서 함수 이름은 같은 문고, 명사, 동사를 사용
+- 함수 인수 
+  - 최선은 입력 인수가 없는 경우이며, 차선은 입력 인수가 1개뿐인 경우
+  - 플래그 인수 : 함수가 한꺼번에 여러 가지를 처리
+    - ex) render(true) => render(boolean isSuite) => renderForSuite() / renderForSingleTest()
+  - 이항 함수 : 이항 함수가 적절한 경우도 있음 ex) Pont p = new Point(0,0) => 인수 2개가 하나의 값을 표현
+    - 무조건 나쁘지는 않지만 그만큼 위험이 따름
+- 부수 효과를 일으키지 않게 작성
+- 명령과 조회를 분리
+  - 함수는 뭔가를 수행하거나 뭔가에 답하거나 둘 중 하나만 해야함
+- 오류 코드보다 예외를 사용
+  ```
+  public void delete(Page page) {
+    try {
+      deletePageAndAllReferences (page);
+    } catch {
+      logError(e);
+    }
+  }
+  
+  private void deletePageAndAllReferences(Page page) throws Exception {
+    deletePage(page);
+    registry.deleteReference(page.name);
+    configKeys.deletekey(page.name.makeKey());
+  }
+  
+  private void logError(Exception e) {
+    logger.log(e.getMessage());
+  }
+  ```
