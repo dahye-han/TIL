@@ -229,6 +229,41 @@ public List<int[]> getFlaggedcells() {
     - 애초에 null을 인수로 넘기지 못하도록 금지하는 정책을 만듬
     
 ## 경계
+- 외부 코드를 우리 코드에 깔끔하게 통합할 때, 소프트웨어 경계를 깔끔하게 처리하는 기법과 기교
+- 외부 코드 사용
+  - 경계 인터페이스를 이용할 대는 이를 이용하는 클래스나 클래스 계열 밖으로 노출되지 않도록 주의
+- 경계 살피고 익히기
+  - 학습테스트
+    - 곧바로 우리쪽 코드를 작성해 외부 코드를 호출하는 대신 먼저 간단한 테스트 케이스를 작성
+    - 통제된 환경에서 API를 제대로 이해하는지를 확인
+    - 패키지 새 버전이 나온다면 학습 테스트를 돌려 차이가 있는지 확인
+- log4j 익히기
+  ```
+  public class LogTest { 
+    private Logger logger;
+    
+    @Before
+    public void initialize() {
+      logger = Logger.getLogger("logger");
+      logger.removeAllAppenders();
+      Logger.getRootLogger().removeAllAppenders();
+    }
+    
+    @Test
+    public void basicLogger() {
+      BasicConfigurator.configure();
+      logger.info("basicLogger");
+    }
+    
+    @Test
+    public void addAppenderWithStream() {
+      logger.addAppender(new ConsoleAppender(
+        new PatternLayout("%p %t %m%n"),
+        ConsoleAppender.SYSTEM_OUT));
+        logger.info("addAppenderWithStream");
+    }
+  }
+  ```
 
 ## 단위 테스트
 
