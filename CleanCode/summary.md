@@ -11,25 +11,25 @@
 ## 의미 있는 이름
 - 따로 주석이 필요없이 변수의 존재 이유, 수행 기능, 사용 방법을 알 수 있음
 - 코드의 함축성이 중요
-```
-public List<int[]> getThem(){
-  List<int[]> list1 = new ArrayList<int[]>();
-  for(int[] x: theList)
-    if (x[0] == 4)
-      list1.add(x);
-  return list1;
-}
+ ```
+ public List<int[]> getThem(){
+   List<int[]> list1 = new ArrayList<int[]>();
+   for(int[] x: theList)
+     if (x[0] == 4)
+       list1.add(x);
+   return list1;
+ }
 
-public List<int[]> getFlaggedcells() {
-  List<int[]> flaggedCells = new ArrayList<int[]>();
-  for (int[] cell : gameBoard)
-    if(cell[STATUS_VALUE] == FLAGGED)
-      flaggedCells.add(cell);
-  return flaggedCells;
-}
+ public List<int[]> getFlaggedcells() {
+   List<int[]> flaggedCells = new ArrayList<int[]>();
+   for (int[] cell : gameBoard)
+     if(cell[STATUS_VALUE] == FLAGGED)
+       flaggedCells.add(cell);
+   return flaggedCells;
+ }
 
-//코드의 단순성을 변하지 않았지만, 코드는 더욱 명확해짐
-```
+ //코드의 단순성을 변하지 않았지만, 코드는 더욱 명확해짐
+ ```
 - 널리 쓰이는 의미가 있는 단어(hp, aix, sco 등)를 다른 의미로 사용하는걸 지양
 - 의미 없이 연속된 숫자(a1, a2...)를 덧붙이거나 불용어(Info,Data...)를 추가하는 방식은 지양
 - 발음하기 쉬운 이름을 사용하는걸 지향
@@ -38,7 +38,7 @@ public List<int[]> getFlaggedcells() {
 - 클래스 이름, 객체 이름 : 명사나 명사구가 적합(Customer, WikiPage, Account, AddressParser)
 - 매서드 이름 : 동사나 동사구가 적합(postPayment, deletePage,save)
 - 기발한 이름보다 명료한 이름을 선택
-- 한 개념에 한 단어를 사용하고, 기존의 메서드와 맥락이 다르면 다른 단어를 사용한다.
+- 한 개념에 한 단어를 사용하고, 기존의 메서드와 맥락이 다르면 다른 단어를 사용
   - add가 기존 값 두개를 더하거나 이어서 새로운 값을 만드는 것일때, 새로 작성하는 메서드는 집합에 값 하나를 추가한다면 메서드의 이름은 insert나 append가 적당
 - 프로그래머에게 익숙한 기술 개념에는 기술 개념을 사용, 적절한 용어가 없다면 문제 영역에서 이름을 가져옴
 
@@ -168,10 +168,10 @@ public List<int[]> getFlaggedcells() {
         - 변수 선언 : 변수는 사용하는 위치에 최대한 가까이 선언
         - 인스턴스 변수 : 클래스 맨 처음에 선언한다
         - 종속 함수 
-          - 한 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치한다.
-          - 가능하다면 호출하는 함수를 호출되는 함수보다 먼저 배치한다.
-        - 개념의 유사성 : 비슷한 동작을 수행하는 함수들은 종속적인 관계가 없더라도 가가이 배치한다.
-      - 세로 순서 : 중요한 개념을 가장 먼저 표현하면서 세세한 사항은 가장 마지막에 표현한다.
+          - 한 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치
+          - 가능하다면 호출하는 함수를 호출되는 함수보다 먼저 배치
+        - 개념의 유사성 : 비슷한 동작을 수행하는 함수들은 종속적인 관계가 없더라도 가가이 배치
+      - 세로 순서 : 중요한 개념을 가장 먼저 표현하면서 세세한 사항은 가장 마지막에 표현
         - 가로 형식 맞추기 : 100자나 120자 정도가 적당
       - 들여쓰기 : 범위로 이뤄진 계층을 표현하기 위해 사용
         - 클래스 정의처럼 파일 수준인 문장은 들여쓰지 않음
