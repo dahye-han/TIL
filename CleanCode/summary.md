@@ -458,11 +458,13 @@
 - 테스트 주도 개발 (TDD)
   - 변형을 가한 후에도 시스템이 변경 전과 똑같이 돌아가야 한다
   - 변경 전후에 시스템이 똑같이 돌아간다는 사실을 확인하려면 언제든 실행이 가능한 자동화된 테스트 슈트가 필요
-  
 
 ## JUnit 들여다보기
 
 ## SerialDate 리펙터링
+- http://www.jfree.org/fcommon/index.php 에서 JCommon라이브러리를 제공
+- JCommon 라이브러리를 뒤져보면 org.jfree.date라는 패키지가 있으며, 여기에 SerialDate라는 클래스가 존재
+- SerialDate : 날짜를 표현하는 자바 클래스
 
 ## 냄새와 휴리스틱
 
