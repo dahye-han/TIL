@@ -45,3 +45,17 @@
   - 웹 애플리케이션에 React 적용하기
     - React를 기존 웹 앱에 적용하는 경우
       - UI 라이브러리로 React와 관련된 Redux나 React Router를 활용한 단일 페이지 애플리케이션 스택의 구성
+      - MVC의 V를 대체하는 UI라이브러리로 기존 MVC 프레임워크와의 결합
+      - jQuery를 기반으로 서버 측 랜더링을 거친 애플리케이션에서 자동완성 등 일부 기능을 위한 UI 컴포넌트로 활용
+      - 대부분의 로직을 직접 처리하는 전통적인 방식의 백엔드에서 서버 측 랜더링 템플릿 라이브러리로 활용
+      - 백엔드와 프론트엔드에서 모두 자바스크립트를 사용하는 경우(express-react-views)를 활용한 Express.js 백엔드를 예로 들 수 있음
+    - React 라이브러리와 렌더링 대상
+      - 여러 가지 랜더링 대상에 React를 적용할 수 있는 패키지를 선보임
+    - 단일 페이지 애플리케이션과 React 
+      - SPA 방식은 UI 랜더링을 대부분 브라우저 상에서 해결
+      - SPA에서는 데이터만 주고 받음
+    - React 개발 스택
+      - 데이터 모델링과 백엔드 : RefluxJS, Redux, Meteor, Flux
+      - 라우팅 : React Router
+      - React용 Bootstrap 컴포넌트 : React-Bootstrap
+      
