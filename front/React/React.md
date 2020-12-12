@@ -80,5 +80,20 @@
     - data- 속성
       - DOM 노드를 추가ㅏ 데이터를 전달해야 하는 경우 => 안티패턴으로 DOM을 데이터베이스나 로컬 스토리지처럼 사용하지 않아야 함
       - 위의 경우 사용자 정의 속성을 렌더링해야 한다면 속성의 접두사로 data-를 사용
-      - 
+    - 스타일 속성
+      - JSX에서는 문자열 대신 자바스크립트 객체를 전달하고, CSS 속성은 카멜 표기법으로 작성
+        - background-image => backgroundImage
+        - font-size => fontSize
+        - font-family => fontFamily
+    - class와 for 속성
+      - React와 JSX는 class와 for를 제외하면 표준 HTML 속성을 모두 사용할 수 있음
+      - class => className
+      - for => htmlFor
+    - 불 값을 속성 값으로 사용하는 경우
+      - disabled, required, checked, autofocus, readOnly 같은 일부 속성은 폼 요소에만 사용
+      - 속성 값을 {} 안에 반드시 자바스크립트 식으로 작성, 문자열로 입력하지 않도록 함
+      - 속성 값을 생각하면 React는 생략된 값을 true로 간주
+- React 컴포넌트의 상태 객체
+  - 컴포넌트를 다시 생성하지 않고, 사용자 조작으로 발생한 이벤트를 처리하여 뷰를 갱신
+  - 상태(state)는 React 컴포넌트에 데이터를 저장하고, 데이터의 변경에 따라 자동으로 뷰를 갱신하도록 하는 핵심 개념
       
