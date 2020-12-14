@@ -102,3 +102,26 @@
     - 상태 객체에 접근할 때는 이름(this.state 객체의 속성)을 이용 ex)this.state.autocompleMatches
     - 상태 데이터는 흔히 뷰의 렌더링이 갱신될 때 동적 정보를 출력하기 위해 사용
     - 본질적으로 상태를 변경하면 뷰에서 변경한 상태에 관련된 부분만 갱신, DOM에 있는 그 외의 다른 부분은 그대로 
+  - 상태 객체 다루기
+    - 상태 객체에 접근하기
+      - 상태 객체는 컴포넌트의 멤버 변수로 this를 통해 접근할 수 있음 ex)this.state.name
+      - render()에서 this.state를 렌더링 할 수 있음
+    - 초기 상태 설정하기
+      - render()에서 상태 데이터를 사용하려면 먼저 상태를 초기화 해야 함
+      ```
+      class MyFancyComponent extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {...}
+        }
+        render() {
+        ...
+        }
+      }
+      ```
+      - this.state의 값은 반드시 객체여야 함
+      - 객체지향 프로그래밍 언어에서 클래스의 인스턴스가 생성될 때 constructor()가 호출됨
+      - 생성자 메서드의 이름은 반드시 constructor로 함
+      - constructor() 메서드 내에서 한 번만 this.state로 직접 상태를 선언
+      - 이외의 부분에서 this.state = ... 으로 직접 상태를 선언하지 않도록 해야 함
+    - 상태 갱신하기
