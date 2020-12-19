@@ -158,3 +158,15 @@
     - 언마운팅 이벤트 : React 엘리먼트를 DOM에서 제거할 떄 발생
     - 라이프 사이클 이벤트는 컴포넌트가 수행한 작업이나 앞으로 수행할 작업에 다라 특정 시점에 실행
     - 라이프사이클 이벤트를 이용하면 컴포넌트의 작업 수행을 향상시키는 사용자 정의 로직을 구현할 수 있음
+  - 이벤트 분류
+    - constructor() : 엘리먼트를 생성하여 기본 속성과 상태를 설정할 때 실행
+    - 마운트 : React 인벤트가 한번만 실행
+      - componentWillMount() : DOM에 삽입하기 전에 실행
+      - componentDidMount() : DOM에 삽입되어 렌더링이 완료된 후 실행
+    - 갱신 : React가 이벤트를 여러 번 실행
+      - componentWillReceiveProps(nextProps) : 컴포넌트가 속성을 받기 직전에 실행
+      - shouldComponentUpdate(nextProps, nextState) : 컴포넌트가 갱신되는 조건을 정의해서 재렌더링을 최적화 할 수 있음
+      - componentWillUpdate(nextProps, nextState) : 컴포넌트가 갱신되기 직전에 실행
+      - componentDidUpdate(prevProps, prevState) : 컴포넌트가 갱신된 후에 실행
+    - 언마운트 : React가 이벤트를 한번만 실행
+      - componentWillUnmout() : 컴포넌트를 DOM에서 제거하기 전에 실행, 구독한 이벤트를 제거하거나 다른 정리 작업을 
