@@ -170,3 +170,19 @@
       - componentDidUpdate(prevProps, prevState) : 컴포넌트가 갱신된 후에 실행
     - 언마운트 : React가 이벤트를 한번만 실행
       - componentWillUnmout() : 컴포넌트를 DOM에서 제거하기 전에 실행, 구독한 이벤트를 제거하거나 다른 정리 작업을 
+  - 이벤트 구현
+    - 라이프사이클 이벤트를 구현하려면 클래스에 메서드를 정의해야 함
+    - React는 이벤트 이름에 해당하는 메서드가 있는지 확인 후 해당 메서드를 실행
+    - 이벤트 이름은 자바스크립트의 다른 이름들과 마찬가지로 대소문자를 구분해서 작성
+  - 마운팅 이벤트
+    - 실제 DOM에 컴포넌트를 추가하는 것에 대한 이벤트
+    - 마운팅은 React 엘리먼트가 DOM에 노출되는 것
+    - componentWillMount() : React 엘리먼트가 실제 DOM에 곧 추가될 것을 알려줌
+      - 단 한번만 실행되고, 실행시점은 초기 렌더링 직전
+      - React 컴포넌트를 서버에서 렌더링하면 기본적으로 HTML 문자열을 얻을 수 있는데, 서버에는 DOM이 없으므로 HTML을 DOM에 추가하는 작업은 없지만, 서버 렌더링 과정에서도 componentWillMount()는 실행
+    - componentDidMount() : React 엘리먼트를 실제 DOM에 추가한 시점으로, 이 시점의 React 엘리먼트는 DOM 노드
+      - 초기 렌더링을 마친 후에 실행되고, 브라우저에서만 한번 실행되고, 서버 렌더링에서는 실행되지 않음
+      - 자식 컴포넌트의 componentDidMount() 메서드는 부모 컴포넌트의 componentDidMount()보다 먼저 호출
+      - componentDidMount() 이벤트는 다른 자바스크립트 라이브러리를 통합하기에 가장 적절한 위치
+      - 
+      - 
