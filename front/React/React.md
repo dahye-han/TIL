@@ -226,4 +226,17 @@
     - 캡처 단계를 위한 이벤트 리스너를 등록할 때는 이벤트 이름 뒤에 Capture를 추가하여 작성
     - 캡처 이벤트가 먼저 출력
     - 이런 동작 원리를 응용해서 이벤트 전파를 중지시키거나 이벤트 간의 우선순위를 정할 수 있음
-    
+  - React 합성 이벤트 객체 다루기
+    - React 버전 15의 합성 이벤트 인터페이스에 포함되어 있는 몇 가지 프로퍼티와 메서드
+      - currentTarget: 이벤트를 캡처한 요소의 DOMEventTarget
+      - target: DOMEventTarget, 이벤트가 발생한 요소
+        - 이벤트가 캡처된 곳이 아니라 이벤트가 발생한 DOM 노드로 currentTarget과는 차이가 있음
+      - nativeEvent: DOMEvent, 브라우저 내장 이벤트 객체
+      - preventDefault(): 링크나 폼 전송 버튼처럼 기본 동작을 방지하는 메서드
+      - isDefaultPrevented(): 기본 동작이 방지되었을 때 실행하면 true를 반환
+      - stopPropagation(): 이벤트 전파 중단
+      - isPropagationStopped(): 이벤트 전파가 중단되었을 떄 실행하면 true를 반환
+      - type: 태그명 문자열
+      - persist(): 합성 이벤트를 이벤트 풀에서 꺼낸 후 사용자 코드에서 이벤트에 대한 참조를 유지할 수 있도록 함
+      - isPersistent(): 합성 이벤트를 이벤트 폴에서 꺼낸 경우 실행하면 true를 반환
+      
