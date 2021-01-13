@@ -79,6 +79,17 @@
 
 // 3) 튜플 : 물리적으로는 배열과 같음
 // 배열에 저장되는 아이템의 데이터 타입이 모두 같으면 배열, 다르면 튜플
-    let numberArray: number[] = [1, 2, 3]
-    let tuple: [boolean, number, string] = [true, 1, 'Ok']
-    
+    let numberArray: number[] = [1, 2, 3] //배열
+    let tuple: [boolean, number, string] = [true, 1, 'Ok'] //튜플
+
+// 4) 제네릭 타입 : 다양한 타입을 한꺼번에 취급할 수 있게 해줌
+    class Container<T> {
+        constructor(public value: T){}
+    }
+    let numberContainer: Container<number> = new Container<number>(1)
+    let stringContainer: Container<string> = new Container<string>('Hello world')
+
+// 5) 대수 타입 : 다른 자료형의 값을 가지는 자료형을 의미
+    type NumberOrString = number |string
+    type AnimalAndPerson = Animal &Person
+
