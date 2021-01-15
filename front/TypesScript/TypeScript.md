@@ -50,6 +50,20 @@
         - npm i -D typescript ts-node : typescript, ts-node를 package.json에 설치
         - npm i -D @types/node 
         - tsc --init : tsconfig.json 파일 만들기
-        
+    - 모듈
+        - 소스코드를 여러 개 모듈로 분할하면 어떤 모듈에 어떤 내용이 있는지를 서로 알게 해줘야 함
+        - import : 다른 모듈의 기능을 이용하는 쪽에서 사용하는 키워드
+            - import { 심벌 목록 } from '파일의 상대 경로'
+            - import * as 심벌 from '파일 상대 경로'
+        - export : 기능을 제공하는 쪽에서 사용
+            - interface, class, type, let, const 키워드 앞에도 붙일 수 있음
+        - export default
+            - 타입스크립트가 자바스크립트와 호환하기 위해 export default 구문 제공
+            - 한 모듈이 내보내는 기능 중 오직 한 개에만 붙일 수 있음
+            - import 문으로 불러올 때 중괄호 {} 없이 사용할 수 있음
+            - export 등이 있는 파일에서도 사용할 수 있음
+            
+
+
 
                 
