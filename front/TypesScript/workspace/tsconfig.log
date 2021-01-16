@@ -1,7 +1,7 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
+  "compilerOptions": { // tsc 명령 형식에서 옵션을 나타냄
+    "module": "commonjs", // 동작 대상 플랫폼이 웹 브라우저인지 노드제이에스인지를 구분해 그에 맞는 모듈 방식으로 컴파일
+    "esModuleInterop": true, // 
     "skipLibCheck": true,
     "target" :"ES5",
     "moduleResolution": "node",
@@ -12,5 +12,5 @@
     "noImplicitAny": false,
     "paths": {"*" : ["node_modules/*"] }
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"] // 대상 파일 목록을 나타냄
 }

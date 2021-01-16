@@ -62,6 +62,34 @@
             - 한 모듈이 내보내는 기능 중 오직 한 개에만 붙일 수 있음
             - import 문으로 불러올 때 중괄호 {} 없이 사용할 수 있음
             - export 등이 있는 파일에서도 사용할 수 있음
+    - tsconfig.json 파일 살펴보기
+        - compilerOptions : tsc 명령 형식에서 옵션을 나타냄
+            - "module": "commonjs", 
+                - 동작 대상 플랫폼이 웹 브라우저인지 노드제이에스인지를 구분해 그에 맞는 모듈 방식으로 컴파일
+                - 췝 브라우저에서 동작 : amd
+                - 노드제이에스에서 동작 : commonjs
+            - "esModuleInterop": true, // 
+                - AMD 방식을 전제로 해서 구현한 라이브러리가 동작하게 하기 위해서 설정(true)
+            - "skipLibCheck": true,
+            - "target" :"ES5",
+                - 트랜스파일할 대상 자바스크립트의 버전을 설정
+                - 대부분 es5를 키값으로 설정
+                - 최신 버전의 nodejs를 사용한다면 es6를 설정할 수 있음
+            - "moduleResolution": "node",
+                - module의 키의 값이 commonjs이면 node로 설정
+                - module의 키의 값이 amd 이면 classic으로 설정
+            - "outDir": "dist", "baseUrl": ".",
+                - 트랜스파일된 ES5 자바스크립트 파일을 저장하는 디렉터리를 설정
+                - tsc는 tsconfig.json 파일이 있는 디렉터리에서 실행 => 현재 디렉터리를 의미하는 (.)로 설정
+                - outDir : baseDir 설정값을 기준으로 했을 떄 하위 디렉터리의 이름 => dist라는 값을 설정 => 빌드된 결과가 dist 디렉터리에 생성
+            - "sourceMap": true,
+                - true : 트랜스파일 디레
+            - "downlevelIteration": true,
+            - "noImplicitAny": false,
+            - "paths": {"*" : ["node_modules/*"]
+                - 소스 파일의 import 문에서 from 부분을 해석할 떄 찾아야 하는 디렉터리를 설정
+                - import 문이 찾아야 하는 소스가 외부 패키지이면 node_modules 디렉터리에서 찾아야 하므로 키값에 mode_mocules/*도 포함
+        - include : 대상 파일 목록을 나타냄
             
 
 
