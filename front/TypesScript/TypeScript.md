@@ -86,6 +86,7 @@
                 - true : 트랜스파일 디레
             - "downlevelIteration": true,
             - "noImplicitAny": false,
+                - false : 타입을 지정하지 않더라고 문제로 인식하지 않음 
             - "paths": {"*" : ["node_modules/*"]
                 - 소스 파일의 import 문에서 from 부분을 해석할 떄 찾아야 하는 디렉터리를 설정
                 - import 문이 찾아야 하는 소스가 외부 패키지이면 node_modules 디렉터리에서 찾아야 하므로 키값에 mode_mocules/*도 포함
