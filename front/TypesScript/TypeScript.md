@@ -120,6 +120,10 @@
             - `${변수 이름}`
     - 객체와 인터페이스
 
-
-
+### 실습
+- JSON.stringify(object, null, 2)
+    - JSON.stringify(object) : 객체 object를 JSON 문자열로 바꿔주는 기능
+    - JSON.stringify(object, null, 2) 
+        - 줄 바꿈도 하고 들여쓰기도 해주어, 사람이 읽기 편한 형태의 JSON 문자열을 만듬
+        - 2 : 들여쓰기를 위해 공백 문자를 두 개 사용하라는 의미
                 
