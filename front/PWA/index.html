@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안녕하세요!</title>
+</head>
+<body>
+    <button onclick="fnSayHello()">
+        눌러주세요!
+    </button>
+    <script>
+        fnSayHello();
+        function fnSayHello() {
+            console.log('안녕하세요!');
+        }
+
+        fnSayHello2(); // 표현식이 선언되기 전에 사용하면 에러 발생
+        const fnSayHello2 = function(){
+            console.log('안녕하세요!2222');
+        }
+    </script>
+</body>
+</html>

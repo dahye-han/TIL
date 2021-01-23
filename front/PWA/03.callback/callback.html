@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <button onclick="
+        fnProductReady(1, 2000, function (pRet) {
+            console.log(pRet);
+            fnProductReady(2, 1000, function (pRet) {
+                console.log(pRet);
+                fnProductReady(3, 500, function (pRet) {
+                    console.log(pRet);
+                    console.log('가독성이 낮고 유지 보수하기 어려운 콜백 지옥 발생!');
+                })
+            })
+        })
+    ">콜백함수 실행!</button>
+    <script>
+        function fnProductReady(Num, Time, fnCallback) {
+            setTimeout(() => {
+                console.log(Num);
+                fnCallback('상품이 정상적으로 배송되었습니다.');
+            }, Time);
+        }
+    </script>
+</body>
+</html>
