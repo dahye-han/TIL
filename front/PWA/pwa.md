@@ -100,7 +100,6 @@
         - 콜백 함수로 비동기 처리 구현
             - 매개변수로 값 대신 함수를 전달
             - 콜백 함수 : 매개변수로 전달된 함수를 콜백 함수
-        - Promise
             - 콜백 함수의 문제
                 - 콜백 지옥 : 콜백 함수가 늘어나서 심하게 중첩
                 - 반환값 처리 문제 : 반환값을 처리하는 시점이 분리되어 관리가 어려움
@@ -113,5 +112,39 @@
             - 텍스트를 객체로 바꿈 : JSON.parse()
             - 객체를 텍스트로 변환 : JSON.stringify()
         - Fetch API
-            
+            - 웹 API에서 제공하는 함수
+            - 원격 서버에서 제공하는 데이터의 CRUD 작업을 손쉽게 하도록 HTTP Request, Response의 POST,GET,PUT,DELEte 메서드로 관리해주는 방법을 제공
+            - fetch(데이터를 읽을 주소)
+                - 반환값 : 서버가 응답하는 값을 Promise 객체로 변환
+- Promise와 비동기 처리 방식
+    - 비동기 처리방식으로 실행된 결과의 성공과 실패를 관리하는 객체
+    - 성공 : resolved, 실패 : rejected, 이행 지연 : pending
+    - 최종 성공 : fullfilled, 최종 실패 : unfullfilled
+- await 연산자와 async 비동기 함수
+    - await 
+        - 다음 실행으로 넘어가지 않고 결과가 나올때까지 기다림
+        - 오른쪽 항을 동기로 처리하도록 지시 
+        - 단독으로 사용하면 결과가 나오지 않을 떄 무한 루프에 빠질수 있음
+        - 비동기 방식으로 처리하는 명령이 있는 함수는 반드시 async를 실행
+
+### PWA 만들어보기
+- manifest.json
+    - 유효성 검사 웹 사이트 : https://manifest-validator.appspot.com/
+    - "name": "안녕하세요! PWA by JS", //바로가기 아이콘 설치를 권장하는 팝업 배너와 스플래시 스크리에 표시되는 제목
+    - "short_name": "PWA by JS", //바탕화면 바로가기 아이콘 아래 표시되는 제목
+    - "description": "PWA start program", //웹 크롤러에 수집되는 내용
+    - "scope": ".", //매니페스트에 정의된 내용이 적용될 수 있는 파일들의 범위를 지정
+    - "start_url": "./", //프로그램을 실행하면 시작될 URL
+    - "display": "fullscreen", //PWA를 실행하면 나타나는 화면의 형태를 설정하는 속성
+    - "orientation": "portrait", //화면의 방향을 결정하는 속성
+    - "theme_color": "#ffffff", //상태표시줄의 생상을 설정
+    - "background_color": "#ffffff", //스플래시 스크린의 배경색을 설정
+    - "icons": [ //아이콘 이미지 중에서 128dpi에 가장 가까운 이미지를 찾아 화면에 표시
+            {
+            "src": "images/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+            }
+        ]
+
                 

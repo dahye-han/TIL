@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="
+        fnProductReady(1, 2000)
+            .then((pResult) => {
+                console.log(pResult);
+                return fnProductReady(2, 1000);
+            })
+            .then((pResult2) => {
+                console.log(pResult2);
+                return fnProductReady(3, 500);
+            })
+            .then((pResult3) => {
+                console.log(pResult3);
+            })
+    ">Promise: 상품 배송 시작!</button>
+    <script>
+        function fnProductReady(Num, Time) {
+            return new Promise((fnResolve) => {
+                setTimeout(() => {
+                    console.log(Num);
+                    fnResolve('상품이 성공적으로 배송되었습니다.');
+                }, Time);
+            });
+        }
+
+        async function fnDoAsyncFunc() {
+            console.log(await fnProductReady(1, 2000));
+            console.log(await fnProductReady(2, 1000));
+            console.log(await fnProductReady(3, 500));
+        }
+
+        fnDoAsyncFunc();
+    </script>
+</body>
+</html>
