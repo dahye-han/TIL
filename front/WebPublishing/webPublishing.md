@@ -50,3 +50,7 @@
     - 클래스, :추상 클래스로 지정한 속성
     - 태그 이름으로 지정한 속성
     - 상위 객체에 의해 상속된 속성
+- 콘텐츠 영역 최적화
+    - 화면에 따라 텍스트 영역의 너비가 달라지는걸 고정
+    - 텍스트 영역의 max-width의 값을 고정
+    - max-width:1100px; margin:0 auto; overflow:hidden; overflow-y:auto;
