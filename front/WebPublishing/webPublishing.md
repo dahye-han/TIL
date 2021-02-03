@@ -54,3 +54,6 @@
     - 화면에 따라 텍스트 영역의 너비가 달라지는걸 고정
     - 텍스트 영역의 max-width의 값을 고정
     - max-width:1100px; margin:0 auto; overflow:hidden; overflow-y:auto;
+- 버튼 태그 사용 시점
+    - <a href="#"> : 링크로 이동할 때나 팝업창으로 이동할 때
+    - <button>, <input type="submit"> : form이 데이터를 가지고 전송되는 상황
