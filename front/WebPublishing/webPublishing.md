@@ -57,3 +57,6 @@
 - 버튼 태그 사용 시점
     - <a href="#"> : 링크로 이동할 때나 팝업창으로 이동할 때
     - <button>, <input type="submit"> : form이 데이터를 가지고 전송되는 상황
+- 3D 모션 입히기
+    - transform-style: flat; : 요소의 자식이 요소 자체의 평면에 있음
+    - transform-style: preserve-3d; : 요소의 자식이 3D 공간에 배치되어야 함을 나타냄
