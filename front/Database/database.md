@@ -314,3 +314,78 @@
     - DELETE문의 수행으로도 가능하지만, TRUNCATE는 데이터 정의어이기 떄문에 ROLLBACK이 되지 않음
 - DROP : 데이터베이스 객체를 삭제하는 데 사용
     - DROP TABLE 테이블명;
+
+## 객체종류
+- 사용자 테이블 : 데이터베이스를 통해 관리할 데이터를 저장하는 테이블
+- 데이터 사전 : 데이터베이스를 구성하고 운영하는 데 필요한 모든 정보를 저장하는 특수한 테이블로 데이터베이스가 생성되는 시점에 자동으로 만들어짐
+    - 사용자가 데이터 사전 정보에 직접 접근하거나 작업하는것을 허용하지 않음
+    - 데이터 사전 뷰로 제공된 정보들을 열람할 수 있음
+    - USER_XXXX : 현재 데이터베이스에 접속한 사용자가 소유한 객체 정보
+    - ALL_XXXX : 현재 데이터베이스에 접속한 사용자가 소유한 객체 또는 다른 사용자가 소유한 객체 중 사용 허가를 받은 객체, 즉 사용 가능한 모든 객체 정보
+    - DBA_XXXX : 데이터베이스 관리를 위한 정보(데이터베이스 관리 권한을 가진 SYSTEM, SYS 사용자만 열람 가능)
+    - V$_XXXX : 데이터베이스 성능 관련 정보(X$_XXXX 테이블의 뷰)
+- 인덱스 : 데이터 검색 성능의 향상을 위해 테이블 열에 사용하는 객체
+    - 사용자가 직접 특정 테이블의 열에 지정할 수도 있지만 열이 기본키 또는 고유키일 경우에 자동으로 생성
+    - 인덱스 생성 
+        - CREATE INDEX 인덱스 이름 ON 테이블 이름(열 이름1 ASC or DESC, 열 이름2 ASC or DESC, ...);
+        - 단일 인덱스(single index) : CREATE INDEX IDX_NAME ON EMP(SAL);
+        - 복합 인덱스(concatenated index), 결합 인덱스(composite index)
+            - 두 개 이상 열로 만들어지는 인덱스
+            - WHERE 절의 두 열이 AND 연산으로 묶이는 경우
+            - CREATE INDEX IDX_NAME ON EMP(SAL, ENAME, ...);
+        - 고유 인덱스(unique index)
+            - 열에 중복 데이터가 없을 때 사용
+            - UNIQUE 키워드를 지정하지 않으면 비고유 인덱스(non unique index)가 기본값
+            - CREATE UNIQUE INDEX IDX_NAME ON EMP(EMPNO);
+        - 함수 기반 인덱스(function based index)
+            - 열에 산술식 같은 데이터 가공이 진행된 결과로 인덱스 생성
+            - CREATE INDEX IDX_NAME ON EMP(SAL*12 + COMM);
+        - 비트맵 인덱스(bitmap index)
+            - 데이터 종류가 적고 같은 데이터가 많이 존재할 때 주로 사용
+            - CREATE BITMAP INDEX IDX_NAME ON EMP(JOB);
+    - 인덱스 삭제
+        - DROP INDEX 인덱스 이름;
+- 뷰 : 하나 이상의 테이블을 조회하는 SELECT문을 저장한 객체
+    - 사용 목적
+        - 편리성 : SELECT문의 복잡도를 완화하기 위해 
+        - 보안성 : 테이블의 특정 열을 노출하고 싶지 않을 경우
+    - 뷰 생성
+        - CREATE [OR REPLACE] [FORCE : NOFORCE] VIES 뷰 이름 (열 이름1, 열 이름2,...) AS (저장할 SELECT문) [WITH CHECK OPTION [CONSTRAINT 제약 조건]] [WITH READ ONLY [CONSTRAINT 제약 조건]];
+    - 뷰 삭제
+        - DROP VIEW 뷰 이름;
+        - 뷰는 실제 데이터가 아닌 SELECT문만 저장하므로 뷰를 삭제해도 테이블이나 데이터가 삭제되는 것은 아님
+    - 인라인 뷰 : 일회성으로 만들어서 사용하는 뷰
+        - SELECT문에서 사용되는 서브쿼리, WITH절에서 미리 이름을 정의해 두고 사용하는 SELECT문 등이 이에 해당
+- 시퀀스 : 오라클 데이터베이스에서 특정 규칙에 맞는 연속 숫자를 생성하는 객체
+    - 시퀀스 생성 : CREATE SEQUENCE 시퀀스 이름 [INCREMENT BY n] [START WITH n] [MAXVALUE n : NOMAXVALUE] [MINVALUE n : NOMINVALUE] [CYCLE : NOCYCLE] [CACHE n : NOCACHE]
+    - 시퀀스 사용
+        - 시퀀스이름.CURRVAL : 시퀀스에서 마지막으로 생성한 번호를 반환
+        - 시퀀스이름.NEXTVAL : 다음 번호를 생성
+    - 시퀀스 수정
+        - ALTER SEQUENCE 시퀀스 이름 [INCREMENT BY n] [MAXVALUE n : NOMAXVALUE] [MINVALUE n : NOMINVALUE] [CYCLE : NOCYCLE] [CAHCE n : NOCACHE]
+    - 시퀀스 삭제
+        - DROP SEUQENCE 시퀀스 이름
+        - 시퀀스를 삭제해도 시퀀스를 사용하여 추가된 데이터는 삭제되지 않음
+- 동의어 : 테이블,뷰,시퀀스 등 객체 이름 대신 사용할 수 있는 다른 이름을 부여하는 객체
+    - 테이블 이름이 너무 길어 사용이 불편할 때 좀 더 간단하고 짧은 이름을 하나 더 만들어 주기 위해 사용
+    - 동의어 생성 : CREATE [PUBLIC] SYNONYM 동의어 이름 FOR [사용자.][객체 이름];
+    - 동의어 삭제 : DROP SYNONYM E;
+
+## 제약 조건
+- 테이블의 특정 열에 지정
+- NOT NULL : 지정한 열에 NULL을 허용하지 않습니다. NULL을 제외한 데이터의 중복은 허용 
+    - 이미 생성한 테이블에 제약 조건 지정 : ALTER TABLE 테이블 이름 MODIFY(열이름 NOT NULL);
+    - 제약 조건 삭제 : ALTER TABLE 테이블 이름 DROP CONSTRAINT 제약 조건 이름
+- UNIQUE : 지정한 열이 유일한 값을 가짐. 중복될 수 없음. NULL은 값의 중복에서 제외
+    - 이미 생성한 테이블에 제약 조건 지정 : ALTER TABLE 테이블 이름 MODIFY(열이름 UNIQUE);
+    - 제약 조건 삭제 : ALTER TABLE 테이블 이름 DROP CONSTRAINT 제약 조건 이름
+- PRIMARY KEY : 지정한 열이 유일한 값이면서 NULL을 허용하지 않음
+- FOREIGN KEY : 다른 테이블의 열을 참조하여 존재하는 값만 입력할 수 있음
+    - CREATE TABLE 테이블 이름(...(다른 열 정의), 열 자료형 CONSTRAINT [제약 조건 이름] REFERENCES 참조 테이블(참조할 열));
+- CHECK : 설정한 조건식을 만족하는 데이터만 입력 가능
+- DEFAULT : 특정 열에 저장할 값이 지정되지 않았을 경우에 기본값을 지정
+- 제약조건 비활성화, 활성화
+    - ALTER TABLE 테이블 이름 DISABLE [NOVALiDATE / VALIDATE(선택)] CONSTRAINT 제약조건이름;
+    - ALTER TABLE 테이블 이름 ENABLE [NOVALiDATE / VALIDATE(선택)] CONSTRAINT 제약조건이름;
+        
+    
