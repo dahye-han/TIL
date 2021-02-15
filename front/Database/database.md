@@ -387,5 +387,36 @@
 - 제약조건 비활성화, 활성화
     - ALTER TABLE 테이블 이름 DISABLE [NOVALiDATE / VALIDATE(선택)] CONSTRAINT 제약조건이름;
     - ALTER TABLE 테이블 이름 ENABLE [NOVALiDATE / VALIDATE(선택)] CONSTRAINT 제약조건이름;
+
+## 사용자 관리
+- 사용자 : 데이터베이스에 접속하여 데이터를 관리하는 계정을 사용자로 표현
+- 스키마 : 데이터 간 관계, 데이터 구조, 제약 조건 등 데이터를 저장 및 관리하기 위해 정의한 데이터베이스 구조의 범위
+- 사용자 생성 : CREATE USER 사용자 이름(필수) IDENTIFIED BY 패스워드(필수)...
+- 사용자 정보 조회 : SELECT * FROM ALL_USER WHERE USERNAME = '사용자이름';
+- 사용자 정보 변경 : ALTER USER 사용자 이름 IDENTIFIED BY 변경될 비밀번호;
+- 사용자 삭제 : DROP USER 사용자이름;
+- 사용자와 객체 모두 삭제 : DROP USER 사용자이름 CASCADE;
+
+## 권한 관리
+- 시스템 권한(system privilege) : 사용자 생성과 정보 수정 및 삭제, 데이터베이스 접근, 오라클 데이터베이스의 여러 자원과 객체 생성 및 관리 등의 권한을 포함
+    - 시스템 권한 부여 : GRANT [시스템 권한] TO [사용자 이름/롤(Role)이름/PUBLIC][WITH ADMIN OPTION];
+    - 시스템 권한 취소 : REVOKE [시스템 권한] FROM [사용자 이름/롤(Role)이름/PUBLIC];
+- 객체 권한(object privilege) : 특정 사용자가 생성한 테이블,인덱스,뷰,시퀀스 등과 관련된 권한
+    - 객체 권한 부여 : GRANT [객체 권한/ALL PRIVILEGES] ON [스키마,객체 이름] TO [사용자 이름/롤(Role)이름/PUBLIC][WITH GRANT OPTION];
+    - 객체 권한 취소 : REVOKE [객체 권한/ALL PRIVILEGES(필수)] ON [스키마,객체 이름(필수)] FROM [사용자 이름/롤(Role) 이름/PUBLIC(필수)][CASCADE CONSTRAINTS/FORCE(선택)]
+
+## 롤 관리
+- 롤 : 여러 종류의 권한을 묶어 놓은 그룹
+- 사전 정의된 롤
+    - CONNECT 롤 : 사용자가 데이터베이스에 접속하는 데 필요한 CREATE SESSiON 권한
+    - RESOURCE 롤 : 테이블, 시퀀스를 비롯한 여러 객체를 생성할 수 있는 기본 시스템 권한
+    - DBA 롤 : 데이터베이스를 관리하는 시스템 권한
+- 사용자 정의 롤 
+    - CREATE ROLE문으로 롤을 생성 : CREATE ROLE ROLESTUDY;
+    - GRANT 명령어로 생성한 롤에 권한을 포함 : GRANT CONNECT, RESOURCE, CREATE VIEW, CREATE SYNONYM TO ROLESTUDY;
+    - GRANT 명령어로 권한이 포함된 롤을 특정 사용자에게 부여 : GRANT ROLESTUDY TO 사용자이름;
+    - REVOKE 명령어로 롤을 취소 : REVOKE ROLESTUDY FROM 사용자이름;
+    - 롤 삭제 : DROP ROLE ROLESTUDY;
+- 
         
     
