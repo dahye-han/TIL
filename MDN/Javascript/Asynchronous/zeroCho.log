@@ -1,0 +1,17 @@
+// async/await
+const findAndSaveUser = async (Users) => {
+    try {
+        let user = await Users.findOne({});
+        user.name = 'zero';
+        user = await user.save();
+        user = await Users.findOne({ gender.'m' });
+        //생략
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+// encodeURLComponent, decodeURLComponent
+- 주소에 한글이 들어가는 경우 서버가 한글 주소를 이해하지 못하는 경우에 사용
+- 보낼 때 : const result = await axios.get(`https://www.~.com/api/search/${encodeURLComponent('노드')}`);
+- 받을 때 : decodeURLComponent('변환된 한글'); 
