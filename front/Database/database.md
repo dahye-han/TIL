@@ -465,5 +465,22 @@
     - CONTINUE : 수행 중인 반복의 현재 주기를 건너뜀
     - CONTINUE-WHEN : 특정 조건식을 지정하고 조건식을 만족하면 현재 반복 주기를 건너뜀
 
-        
+## 레코드와 컬렉션
+- 레코드
+    - 자료형이 각기 다른 데이터를 하나의 변수에 저장하는 데 사용
+    - TYPE 레코드 이름 IS RECORD ( 변수이름 자료형 NOT NULL := (또는 DEFAULT) 값 또는 값이 도출되는 여러 표현식)
+    - 레코드를 사용한 INSERT : CREATE TABLE DEPT_RECORD AS SELECT * FROM DEPT;
+    - 레코드를 사용한 UPDATE : UPDATE DEPT_RECORD SET ROW = dept_rec WHERE DEPTNO = 99;
+    - 레코드를 포함하는 레코드(중첩레코드) : 레코드에 포함된 변수의 자료형을 지정할 때 다른 레코드를 지정할 수도 있음
+- 컬렉션
+    - 자료형이 같은 여러 데이터를 저장하는데 사용
+    - 특정 자료형의 데이터를 여러 개 저장하는 복합 자료형
+    - 연관 배열(associative array (or index by table))
+        - 인덱스라고 불리는 키(key), 값(value)으로 구성되는 컬렉션
+        - 중복되지 않은 유일한 키를 통해 값을 저장하고 불러오는 방식을 사용
+        - TABLE 연관 배열 이름 IS TABLE OF 자료형 [NOT NULL] INDEX BY 인덱스형;
+        - 레코드를 활용한 연관 배열 : 연관 배열의 자료형에 레코드를 사용할 수 있으며, 다양한 자료형을 포함한 레코드를 여러 개 사용할 수 있으므로 마치 테이블과 같은 데이터 사용과 저장이 가능
+    - 중첩 테이블(nested table)
+    - VARRAY(variable-size array)
+    - 컬렉션 메서드 : 컬렉션 사용상의 편의를 위해 몇 가지 서브프로그램을 제공하고 있음    
     
