@@ -544,3 +544,23 @@
             - DROP PACKAGE 패키지 이름 : 패키지 명세와 본문을 한 번에 삭제하기
             - DROP PACKAGE BODY 패키지 이름 : 패키지의 본문만을 삭제   
     - 트리거(trigger) : 특정 상황(이벤트)이 발생할 때 자동으로 연달아 수행할 기능을 구현하는 데 사용
+        - 데이터베이스 안의 특정 상황이나 동작, 즉 이벤트가 발생할 경우에 자동으로 실행되는 기능을 정의하는 PL/SQL 서브프로그램
+        - 데이터 조작어(DML) : INSERT, UPDATE, DELETE
+        - 데이터 정의어(DDL) : CREATE, ALTER, DROP
+        - 데이터베이스 동작 : SERVERERROR, LOGON, LOGOFF, STARTUP, SHUPDOWN
+        - DML 트리거 : INSERT, UPDATE, DELETE와 같은 DML 명령어를 기점으로 동작함
+            - CREATE [OR REPLACE] TRIGGER 트리거 이름 BEFORE | AFTER INSERT | UPDATE | DELETE ON 테이블 이름 REFERENCING OLD as old | New as new FOR EACH ROW WHEN 조건식 FOLLOWS 트리거 이름2, 트리거 이름3 ... ENABLE | DISALBE DECLARE 선언부 BEGIN 실행부 EXCEPTION 예외 처리부 END;
+        - DDL 트리거 : CREATE, ALTER, DROP과 같은 DDL 명령어를 기점으로 동작함
+        - INSTEAD OF 트리거 : 뷰(View)에 사용하는 DML 명령어를 기점으로 동작함
+        - 시스템(system) 트리거 : 데이터베이스나 스키마 이벤트로 동작함
+        - 단순(simple) 트리거 : 다음 각 시점(timing point)에 동작함
+            - 트리거를 작동시킬 문장이 실행되기 전 시점
+            - 트리거를 작동시킬 문장이 실행된 후 시점
+            - 트리거를 작동시킬 문장이 행에 영향을 미치기 전 시점
+            - 트리거를 작동시킬 문장이 행에 영향을 준 후 시점
+        - 복합(compound) 트리거 : 단순 트리거의 여러 시점에 동작함
+        - 트리거 관리
+            - 트리거 정보 조회 : SELECT TRIGGER_NAME, TRIGGER_TYPE, TRIGGERING_EVENT, TABLE_NAME, STATUS FROM USER_TRIGGERS;
+        - 트리거 변경 : ALTER TRIGGER 트리거 이름 ENABLE | DISABLE;
+        - 트리거 삭제 : DROP TRIGGER 트리거 이름;
+
