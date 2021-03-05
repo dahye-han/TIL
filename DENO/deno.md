@@ -1,0 +1,13 @@
+## DENO (데노)
+- 기반 기술
+    - V8 Javascript Runtime 
+    - Rust ( replace C++ )
+    - Tokio (event loop)
+    - TypeScript : 기본적으로 장착
+- 특징
+    - ES MOdules만을 유일하게 사용
+        - ex) import { serve } from "http://deno.land/std/http/server.ts";
+        - deno가 패키지 관리를 해서 npm을 안써도 됨
+    - Top level await를 지원
+        - top level일때는 async 없이 await를 사용할 수 있음
+    - 브라우저 호환성
