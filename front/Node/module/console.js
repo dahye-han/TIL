@@ -19,6 +19,7 @@ console.table([{ name: '제로', birth: 1994}, { name: 'hero', birth: 1998}]);
 
 //console.dir(객체, 옵션) : 객체를 콘솔에 표시할 때 사용
 console.dir(obj, { colors: false, depth:2 });
+console.dir(obj, { colors: true });
 console.dir(obj, { colors: true, depth:1 });
 
 
