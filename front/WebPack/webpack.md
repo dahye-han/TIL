@@ -65,4 +65,24 @@
 - mode
     - 각 환경에 해당하는 웹팩의 내장 최적화를 활성화 할 수 있음
     - 기본값 : production
+- module Resolution
+    - 절대 경로로 모듈을 찾는데 도움이 되는 라이브러리
+    - Absolute paths : import 'C:\\Users\\me\\file';
+    - Relative paths : import '../src/file1';
+    - Module paths : import 'module';
+- module Federation
+    - OverridablesPlugin (낮은 수준) 
+        - 특정 모듈을 '재정의 가능'하게 만듬
+        - '__webpack_override__'를 사용
+    - ContainerPlugin (낮은 수준)
+        - 지정된 노출 모듈을 사용하여 추가 컨테이너 항목을 만듬
+    - ContainerReferencePlugin (낮은 수준)
+        - 컨테이너에 대한 특정 참조를 외부로 추가하고 이러한 컨테이너에서 원격 모듈을 가져올 수 있음
+    - ModuleFederationPlugin (높은 수준)
+        - 재정의 및 재정의 가능 항목은 지정된 공유 모듈의 단일 목록으로 결합
+- Hot Module Replacement
+    - 전체 재로드없이 애플리케이션이 실행되는 동안 모듈을 교환, 추가 또는 제거
+        - 정체 다시로드 중에 손실 된 애플리케이션 상태를 유지
+        - 변경된 사항만 업데이트하여 개발 시간을 절약
+        - 소스 코드에서 CSS/JS를 수정하면 브라우저를 즉시 업데이트 합
 
