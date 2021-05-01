@@ -32,12 +32,24 @@ export default class extends Component {
         }))
     }
 
+    handleExerciseCrete = exercise => {
+        this.setState(({exercises}) => ({
+            exercises: [
+                ...exercises,
+                exercise
+            ]
+        }))
+    }
+
     render() {
         const exercises = this.getExercisesByMuscles(), 
         { category, exercise } = this.state;
 
         return <Fragment>
-            <Header />
+            <Header 
+                muscles={muscles}
+                onExerciseCreate={this.handleExerciseCrete}
+            />
 
             <Exercises 
                 exercise={exercise}
