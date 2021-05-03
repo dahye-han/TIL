@@ -14,8 +14,6 @@ export default class extends Component {
             [category]: []
         }), {})
 
-        console.log(muscles, initExercises);
-
         return Object.entries(
             this.state.exercises.reduce((exercises, exercise) => {
                 const { muscles } = exercise
@@ -35,7 +33,8 @@ export default class extends Component {
 
     handleExerciseSelected = id => {
         this.setState(({ exercises }) => ({
-            exercise: exercises.find(ex => ex.id === id)
+            exercise: exercises.find(ex => ex.id === id),
+            editMode: false
         }))
     }
 
@@ -50,7 +49,9 @@ export default class extends Component {
 
     handleExerciseDelete = id => {
         this.setState(({ exercises }) => ({
-            exercises: exercises.filter(ex => ex.id !== id)
+            exercises: exercises.filter(ex => ex.id !== id),
+            editMode: false,
+            exercise: {}
         }))
     }
 
@@ -66,7 +67,8 @@ export default class extends Component {
             exercises: [
                 ...exercises.filter(ex => ex.id !== exercise.id),
                 exercise
-            ]
+            ],
+            exercise
         }))
     }
 

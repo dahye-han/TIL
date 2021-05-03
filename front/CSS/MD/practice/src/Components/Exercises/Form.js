@@ -13,7 +13,7 @@ const styles = theme => ({
 })
 
 export default withStyles(styles)(class extends Component {
-    state = this.getInitState()
+    state = this.getInitState();
 
     getInitState() {
         const { exercise } = this.props;
@@ -25,30 +25,29 @@ export default withStyles(styles)(class extends Component {
         }
     }
 
+   componentDidUpdate(prevProps) {
+        if(this.props.exercise && this.props.exercise.id !== prevProps.exercise.id) {
+            this.setState({
+                ...this.props.exercise
+            })
+        }
+    }
+
     handleChange = name => ({ target: { value }}) => {
         this.setState({
             [name]: value
         })
     }
 
-    handleSubmit = () =>{
+    handleSubmit = () => {
         // TODO: validate
 
-        const { exercise } = this.state;
-
         this.props.onSubmit({
-            ...exercise,
-            id: exercise.title.toLocaleLowerCase().replace(/ /g, '-')
+            id: this.state.title.toLocaleLowerCase().replace(/ /g, '-'),
+            ...this.state
         });
 
-        this.setState({
-            open: false,
-            exercise: {
-                title:'',
-                description: '',
-                muscles: ''
-            }
-        })
+        this.setState(this.getInitState());
     }
 
     render() {
@@ -91,7 +90,7 @@ export default withStyles(styles)(class extends Component {
             variant="raised"
             onClick={this.handleSubmit}
         >
-            Create
+            {this.props.exercise ? 'Edit' : 'Create'}
         </Button>
     </form>
     }
