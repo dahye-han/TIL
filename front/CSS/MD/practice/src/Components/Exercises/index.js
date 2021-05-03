@@ -1,17 +1,24 @@
 import React, { Fragment } from 'react';
 import { List, ListItem, ListItemText, Typography, Grid, Paper, ListItemSecondaryAction, IconButton } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import Form from './Form';
 
 const styles = {
     Paper : { padding: 20, marginTop: 10, marginBottom: 10, height: 500, overflowY: 'auto'}
 }
 
 export default ({ 
+    muscles,
     exercises, 
     category, 
-    onSelect, 
+    editMode,
+    onSelect,
+    exercise, 
     exercise: {id, title = 'Welcome!', description = 'Please select in exercise from the list on the left'} ,
-    onDelete
+    onDelete,
+    onSelectEdit,
+    onEdit
     }) => {
     return (
         <Grid container>
@@ -35,6 +42,9 @@ export default ({
                                     >
                                         <ListItemText primary={title} />
                                         <ListItemSecondaryAction>
+                                            <IconButton onClick={() => onSelectEdit(id)}>
+                                                <EditIcon />
+                                            </IconButton>
                                             <IconButton onClick={() => onDelete(id)}>
                                                 <DeleteIcon />
                                             </IconButton>
@@ -49,17 +59,26 @@ export default ({
             </Grid>
             <Grid item sm>
                 <Paper style={styles.Paper}>
-                    <Typography
+                    {editMode
+                    ? <Form
+                        exercise={exercise}
+                        muscles={muscles}
+                        onSubmit={onEdit}
+                      />
+                    : <Fragment>
+                        <Typography
                         variant="h2"
-                    >
-                        {title}
-                    </Typography>
-                    <Typography
-                        variant="subtitle2"
-                        style={{marginTop: 20}}
-                    >
-                        {description}
-                    </Typography>
+                        >
+                            {title}
+                        </Typography>
+                        <Typography
+                            variant="subtitle2"
+                            style={{marginTop: 20}}
+                        >
+                            {description}
+                        </Typography>
+                    </Fragment>}
+                    
                 </Paper>
             </Grid>
         </Grid>
