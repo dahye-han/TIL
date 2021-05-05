@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     FormControl: {
-        width: 300
+        width: 250
     }
 })
 
