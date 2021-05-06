@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { TextField, withStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import { TextField, FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 
-const styles = theme => ({
-    FormControl: {
-        width: 250
-    }
-})
-
-export default withStyles(styles)(class extends Component {
+export default class extends Component {
     state = this.getInitState();
 
     getInitState() {
@@ -22,14 +11,6 @@ export default withStyles(styles)(class extends Component {
             title: '',
             description: '',
             muscles: ''
-        }
-    }
-
-   componentDidUpdate(prevProps) {
-        if(this.props.exercise && this.props.exercise.id !== prevProps.exercise.id) {
-            this.setState({
-                ...this.props.exercise
-            })
         }
     }
 
@@ -46,13 +27,11 @@ export default withStyles(styles)(class extends Component {
             id: this.state.title.toLocaleLowerCase().replace(/ /g, '-'),
             ...this.state
         });
-
-        this.setState(this.getInitState());
     }
 
     render() {
         const { title, description, muscles} = this.state,
-              { classes, muscles: categories } = this.props;
+              { muscles: categories } = this.props;
 
         return <form>
         <TextField
@@ -60,10 +39,10 @@ export default withStyles(styles)(class extends Component {
             value={title}
             onChange={this.handleChange('title')}
             margin="normal"
-            className={classes.FormControl}
+            fullWidth
         />
         <br/>
-        <FormControl className={classes.FormControl}>
+        <FormControl fullWidth>
             <InputLabel htmlFor="muscles">Muscles</InputLabel>
             <Select
                 value={muscles}
@@ -82,16 +61,17 @@ export default withStyles(styles)(class extends Component {
             value={description}
             onChange={this.handleChange('description')}
             margin="normal"
-            className={classes.FormControl}
+            fullWidth
         />
         <br />
         <Button 
             color="primary"
             variant="raised"
             onClick={this.handleSubmit}
+            disabled={!title || !muscles}
         >
             {this.props.exercise ? 'Edit' : 'Create'}
         </Button>
     </form>
     }
-})
+}

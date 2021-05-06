@@ -33,8 +33,12 @@ export default class extends Component {
                 <Icon>add_circle</Icon>
             </Button>
 
-            <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">
+            <Dialog 
+                open={open} 
+                onClose={this.handleToggle} 
+                fullWidth
+            >
+            <DialogTitle>
                 Create a New Exercise
             </DialogTitle>
             <DialogContent>
