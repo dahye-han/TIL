@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TextField, FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
-
+import { TextField, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 export default class extends Component {
     state = this.getInitState();
 
@@ -35,15 +35,15 @@ export default class extends Component {
 
         return <form>
         <TextField
-            label="Title"
+            label='Title'
             value={title}
             onChange={this.handleChange('title')}
-            margin="normal"
+            margin='normal'
             fullWidth
         />
         <br/>
         <FormControl fullWidth>
-            <InputLabel htmlFor="muscles">Muscles</InputLabel>
+            <InputLabel htmlFor='muscles'>Muscles</InputLabel>
             <Select
                 value={muscles}
                 onChange={this.handleChange('muscles')}
@@ -56,17 +56,17 @@ export default class extends Component {
         <br/>
         <TextField
             multiline
-            rows="4"
-            label="Description"
+            rows='4'
+            label='Description'
             value={description}
             onChange={this.handleChange('description')}
-            margin="normal"
+            margin='normal'
             fullWidth
         />
         <br />
         <Button 
-            color="primary"
-            variant="raised"
+            color='primary'
+            variant='raised'
             onClick={this.handleSubmit}
             disabled={!title || !muscles}
         >

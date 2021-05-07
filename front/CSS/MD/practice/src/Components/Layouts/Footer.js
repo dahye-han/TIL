@@ -1,5 +1,5 @@
 import React from 'react';
-import {Paper, Tabs, Tab, withWidth} from '@material-ui/core';
+import {Tabs, Tab, withWidth, AppBar} from '@material-ui/core';
 
 export default withWidth()(
     ({ muscles, category, onSelect, width }) => {
@@ -9,20 +9,20 @@ export default withWidth()(
         onSelect(index === 0 ? '' : muscles[index - 1]);
     } 
 
-    return <Paper>
+    return <AppBar position='static'>
                 <Tabs
                 value={index}
                 onChange={onIndexSelect}
-                indicatorColor="primary"
-                textColor="primary"
+                indicatorColor='secondary'
+                textColor='secondary'
                 centered={width !== 'xs'}
-                variant={width !== 'xs' ? "scrollable": ""}
+                variant={width !== 'xs' ? 'scrollable': ''}
                 >
-                    <Tab label="All" />
+                    <Tab label='All' />
                     {muscles.map(group => (
                         <Tab key={group} label={group} />
                     ))}
                 </Tabs>
-            </Paper>
+            </AppBar>
 })
     

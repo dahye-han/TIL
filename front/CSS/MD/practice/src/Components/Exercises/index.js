@@ -35,12 +35,13 @@ export default withStyles(styles)(
                     (!category || category === group)
                     ? <Fragment key={group}>
                             <Typography
-                                variant="h6"
+                                variant='h6'
+                                color='secondary'
                                 style={{textTransform: 'capitalize'}}
                             >
                                 {group}
                             </Typography>
-                            <List component="ui">
+                            <List component='ui'>
                                 {exercises.map(({ id, title }) =>
                                     <ListItem 
                                         key = {id}
@@ -49,10 +50,10 @@ export default withStyles(styles)(
                                     >
                                         <ListItemText primary={title} />
                                         <ListItemSecondaryAction>
-                                            <IconButton onClick={() => onSelectEdit(id)}>
+                                            <IconButton color='primary' onClick={() => onSelectEdit(id)}>
                                                 <EditIcon />
                                             </IconButton>
-                                            <IconButton onClick={() => onDelete(id)}>
+                                            <IconButton color='primary' onClick={() => onDelete(id)}>
                                                 <DeleteIcon />
                                             </IconButton>
                                         </ListItemSecondaryAction>
@@ -67,8 +68,9 @@ export default withStyles(styles)(
             <Grid item xs={12} sm={6}>
                 <Paper className={classes.Paper}>
                     <Typography
-                        variant="h2"
+                        variant='h2'
                         gutterBottom
+                        color='secondary'
                     >
                         {title}
                     </Typography>
@@ -81,7 +83,7 @@ export default withStyles(styles)(
                       />
                     : 
                         <Typography
-                            variant="subtitle2"
+                            variant='subtitle2'
                         >
                             {description}
                         </Typography>

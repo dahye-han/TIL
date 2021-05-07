@@ -29,8 +29,12 @@ export default class extends Component {
               { muscles, onCreate } = this.props;
 
         return <Fragment>
-            <Button variant="fab" onClick={this.handleToggle} mini>
-                <Icon>add_circle</Icon>
+            <Button 
+                variant='fab' 
+                onClick={this.handleToggle}  
+                mini
+            >
+                <Icon color='secondary'>add_circle</Icon>
             </Button>
 
             <Dialog 
