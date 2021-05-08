@@ -9,14 +9,16 @@ export default withWidth()(
         onSelect(index === 0 ? '' : muscles[index - 1]);
     } 
 
+    console.log(width);
+
     return <AppBar position='static'>
                 <Tabs
-                value={index}
-                onChange={onIndexSelect}
-                indicatorColor='secondary'
-                textColor='secondary'
-                centered={width !== 'xs'}
-                variant={width !== 'xs' ? 'scrollable': ''}
+                    value={index}
+                    onChange={onIndexSelect}
+                    indicatorColor='secondary'
+                    textColor='secondary'
+                    centered={width !== 'xs'}
+                    variant={width === 'xs' ? 'scrollable' : 'standard'}
                 >
                     <Tab label='All' />
                     {muscles.map(group => (
