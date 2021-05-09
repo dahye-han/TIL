@@ -3,6 +3,7 @@ import { List, ListItem, ListItemText, Typography, Grid, Paper, ListItemSecondar
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { withStyles } from '@material-ui/core/styles';
+import { withContext } from '../../context';
 import Form from './Form';
 
 const styles = theme => ({
@@ -37,11 +38,11 @@ const styles = theme => ({
     }
 })
 
-export default withStyles(styles)(
+const Exercises =
     ({ 
         classes,
         muscles,
-        exercises, 
+        exercisesByMuscles, 
         category, 
         editMode,
         onSelect,
@@ -50,11 +51,11 @@ export default withStyles(styles)(
         onDelete,
         onSelectEdit,
         onEdit
-    }) =>
+    }) => (
         <Grid container className={classes.container}>
             <Grid item className={classes.item} xs={12} sm={6}>
                 <Paper className={classes.paper}>
-                {exercises.map(([group, exercises]) => (
+                {exercisesByMuscles.map(([group, exercises]) => (
                     (!category || category === group)
                     ? <Fragment key={group}>
                             <Typography
@@ -115,4 +116,6 @@ export default withStyles(styles)(
             </Grid>
         </Grid>
 )
+
+export default withContext(withStyles(styles)(Exercises));
     

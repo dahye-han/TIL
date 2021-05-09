@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Header, Footer } from './Layouts/index'; 
 import Exercises from './Exercises/index';
-import { muscles, exercises } from '../store.js'
+import { muscles, exercises } from '../store'
+import { Provider } from '../context';
 export default class extends Component {
     state = {
         exercises,
@@ -73,34 +74,28 @@ export default class extends Component {
         }))
     }
 
+    getContext = () => ({
+        muscles,
+        ...this.state,
+        exercisesByMuscles: this.getExercisesByMuscles(),
+        onCategorySelect: this.handleCategorySelected,
+        onCreate: this.handleExerciseCrete,
+        onEdit: this.handleExerciseEdit,
+        onSelectEdit: this.handleExerciseSelectEdit,
+        onDelete: this.handleExerciseDelete,
+        onSelect: this.handleExerciseSelected
+    })
+
     render() {
-        const exercises = this.getExercisesByMuscles(), 
-        { category, exercise, editMode } = this.state;
-
-        return <Fragment>
+        return (
+        <Provider value={this.getContext()}>
             <CssBaseline />
-            <Header 
-                muscles={muscles}
-                onExerciseCreate={this.handleExerciseCrete}
-            />
+            <Header />
 
-            <Exercises 
-                exercise={exercise}
-                category={category}
-                exercises={exercises}
-                editMode={editMode}
-                muscles={muscles}
-                onSelect={this.handleExerciseSelected}
-                onDelete={this.handleExerciseDelete}
-                onSelectEdit={this.handleExerciseSelectEdit}
-                onEdit={this.handleExerciseEdit}
-            />
+            <Exercises />
 
-            <Footer 
-                category={category}
-                muscles={muscles}
-                onSelect={this.handleCategorySelected}
-            />
-        </Fragment>
+            <Footer />
+        </Provider>
+        )
     }
 }
