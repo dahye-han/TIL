@@ -5,32 +5,39 @@
   "license": "MIT",
   "main": "dist/main.js",
   "scripts": {
-    "start": "webpack-dev-server --open --port 4000 --compress --mode development",
-    "dev": "webpack --mode development --progress",
+    "start": "node dist/main.js",
+    "watch": "webpack --mode development --watch & nodemon dist/main",
+    "dev": "rmdir /s /q dist public && webpack --mode development --progress",
     "build": "webpack --mode production --progress",
     "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json dist",
     "serve": "serve dist"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.14.0",
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
+    "express": "^4.17.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-jss": "^10.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.13.15",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-import": "^1.13.3",
     "html-webpack-plugin": "^4.0.0-alpha.2",
+    "nodemon": "^2.0.7",
+    "reload": "^3.1.1",
     "serve": "^11.3.2",
     "webpack": "^4.19.1",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-node-externals": "^3.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
