@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-export default class extends Component {
+class Form extends Component {
     state = this.getInitState();
 
     getInitState() {
@@ -41,8 +41,7 @@ export default class extends Component {
             margin='normal'
             fullWidth
         />
-        <br/>
-        <FormControl fullWidth>
+        <FormControl fullWidth margin='normal'>
             <InputLabel htmlFor='muscles'>Muscles</InputLabel>
             <Select
                 value={muscles}
@@ -53,7 +52,6 @@ export default class extends Component {
                     )}
             </Select>
         </FormControl>
-        <br/>
         <TextField
             multiline
             rows='4'
@@ -63,7 +61,6 @@ export default class extends Component {
             margin='normal'
             fullWidth
         />
-        <br />
         <Button 
             color='primary'
             variant='raised'
@@ -75,3 +72,5 @@ export default class extends Component {
     </form>
     }
 }
+
+export default Form;
