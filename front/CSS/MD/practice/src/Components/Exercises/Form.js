@@ -14,17 +14,17 @@ class Form extends Component {
         }
     }
 
-    handleChange = name => ({ target: { value }}) => {
-        this.setState({
-            [name]: value
-        })
-    }
-
+    handleChange = ({ target: { value, name }}) => {
+            this.setState({
+                [name]: value
+            })
+        }
+    
     handleSubmit = () => {
         // TODO: validate
 
         this.props.onSubmit({
-            id: this.state.title.toLocaleLowerCase().replace(/ /g, '-'),
+            id: this.state.title.toLowerCase().replace(/ /g, '-'),
             ...this.state
         });
     }
@@ -37,7 +37,8 @@ class Form extends Component {
         <TextField
             label='Title'
             value={title}
-            onChange={this.handleChange('title')}
+            name='title'
+            onChange={this.handleChange}
             margin='normal'
             fullWidth
         />
@@ -45,7 +46,8 @@ class Form extends Component {
             <InputLabel htmlFor='muscles'>Muscles</InputLabel>
             <Select
                 value={muscles}
-                onChange={this.handleChange('muscles')}
+                name='muscles'
+                onChange={this.handleChange}
             >
                 {categories.map(category =>
                     <MenuItem key={category} value={category}>{category}</MenuItem>
@@ -57,7 +59,8 @@ class Form extends Component {
             rows='4'
             label='Description'
             value={description}
-            onChange={this.handleChange('description')}
+            name='description'
+            onChange={this.handleChange}
             margin='normal'
             fullWidth
         />
