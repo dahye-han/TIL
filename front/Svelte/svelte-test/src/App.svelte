@@ -1,5 +1,6 @@
 <script>
 	// import { onMount } from 'svelte';
+	import Fruits from './Fruits.svelte';
 	let name = 'world';
 	let fruits = ['Apple', 'Banana', 'Cherry', 'Orange' , 'Mango'];
 	let age = 85;
@@ -36,11 +37,28 @@
 	>
 		Box!
 	</div>
+	<h2>Fruits</h2>
 	<ul>
 		{#each fruits as fruit}
 			<li>{fruit}</li>
 		{/each}
 	</ul>
+	<h2>Fruits Reverse</h2>
+	<ul>
+		{#each [...fruits].reverse() as fruit}
+			<li>{fruit}</li>
+		{/each}
+	</ul>
+	<h2>Fruits</h2>
+	<ul>
+		{#each fruits as fruit}
+			<li>{fruit}</li>
+		{/each}
+	</ul>
+	<Fruits {fruits} />
+	<Fruits {fruits} reverse/>
+	<Fruits {fruits} slice="-2"/>
+	<Fruits {fruits} slice="0,3"/>
 	<h2 class={age > 85 ? "active" : ""}>
 		{age}
 	</h2>
