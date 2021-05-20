@@ -1,4 +1,6 @@
 <script>
+import { onMount } from 'svelte';
+
 	// import { onMount } from 'svelte';
 	import Fruits from './Fruits.svelte';
 	let name = 'world';
@@ -21,6 +23,11 @@
 		name = 'leave';
 	}
 	let text = '';
+
+	import { storeName } from './store.js';
+	import Parent from './Parent.svelte';
+
+	$storeName = name;
 </script>
 
 <main>
@@ -78,6 +85,8 @@
 	<button on:click={() => {text = 'Hanae'}}>
 		Click
 	</button>
+	<br />
+	<Parent />
 </main>
 
 <style>
