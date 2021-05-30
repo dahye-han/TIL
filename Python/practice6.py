@@ -47,3 +47,39 @@ mix_list = ["A", 20, True]
 # 리스트 확장
 num_list.extend(mix_list)
 print(num_list)
+
+cabinet = { 3 : "A", 100 : "B" }
+print(cabinet[3])
+print(cabinet[100])
+
+print(cabinet.get(3)) #get인 경우 값이 없으면 None 출력
+# print(cabinet[5]) #[]인경우는 값이 없으면 오류 출력
+print(cabinet.get(5, "사용 가능")) # 값이 없는 경우 기본값 설정
+print("hi")
+
+print(3 in cabinet)
+print(5 in cabinet)
+
+cabinet = {"A-3" : "A", "B-100" : "B"}
+print(cabinet["A-3"])
+print(cabinet["B-100"])
+
+print(cabinet)
+cabinet["A-3"] = "C"
+cabinet["C-20"] = "D"
+print(cabinet)
+
+del cabinet["A-3"]
+print(cabinet)
+
+# key 들만 출력
+print(cabinet.keys())
+
+# value 들만 출력
+print(cabinet.values())
+
+# key, value 쌍으로 출력
+print(cabinet.items())
+
+cabinet.clear()
+print(cabinet)
