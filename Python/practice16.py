@@ -1,10 +1,7 @@
 class Unit:
-    def __init__(self, name, hp, damage):
+    def __init__(self, name, hp):
         self.name = name
         self.hp = hp
-        self.damage = damage
-        print("{0} 유닛이 생성 되었습니다.".format(self.name))
-        print("체력 {0}, 공격력 {1}".format(self.hp, self.damage))
 
 # marine1 = Unit("마린", 40, 5)
 # marine2 = Unit("마린", 40, 5)
@@ -20,10 +17,9 @@ class Unit:
 #     print("{0} 는 현재 클로킹 상태입니다.".format(wraith2.name))
 
 # 공격 유닛
-class AttackUnit:
+class AttackUnit(Unit):
     def __init__(self, name, hp, damage):
-        self.name = name
-        self.hp = hp
+        Unit.__init__(self, name, hp)
         self.damage = damage
     
     def attack(self, location):
@@ -37,6 +33,9 @@ class AttackUnit:
         if(self.hp <= 0):
             print("{0} : 파괴되었습니다.".format(self.name))
 
+# 메딕
+
+# 파이어뱃
 firebat1 = AttackUnit("파이어뱃", 50, 16)
 firebat1.attack("5시")
 
